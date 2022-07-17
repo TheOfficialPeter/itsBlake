@@ -1,4 +1,4 @@
-var titles = ["About Me", "Previous Work", "Contact", "Credits"];
+var titles = ["About Me", "Contact", "Contact", "Credits"];
 var contents = ["About me stuff here", "previous work goes here with images or smth", "","This website is an example of my work. It was made using HTML, CSS and JS."];
 var arrow = document.getElementById("arrow");
 var box1 = document.getElementById("num1-box");
@@ -91,7 +91,7 @@ function nextSlide(num){
 		},600);
 
 		var newBox = box.cloneNode(true);
-		newBox.style.background = "linear-gradient(122.06deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
+		newBox.style.background = "linear-gradient(0deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
 
 		if (device == "mobile"){
 			newBox.style.margin = "87px -10px -37px 10px";
@@ -209,6 +209,10 @@ function nextSlide(num){
 
 		}, 500);
 
+        setTimeout(() => {
+			newBox.style.background = "linear-gradient(122.06deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
+        }, 500);
+
 		setTimeout(function(){
 			newBox.style.background = "linear-gradient(122.06deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
 			newBox.style.zIndex = "11";
@@ -273,30 +277,35 @@ function resizeWindow(platform){
 		num2.style.opacity = "0";
 
         navTitle.style.fontSize = "25px";
-        navTitle.style.marginTop = "12.5px";
         navTitle.style.textAlign = "center";
-        navTitle.style.left = "calc(50% - 221px/2)";
+        navTitle.style.left = "calc(50% - 150px/2)";
 
-        navbar.style.width = "250px";
-        navbar.style.left = "calc(50% - 250px/2)";
+        navbar.style.width = "300px";
+        navbar.style.left = "calc(50% - 300px/2)";
     
         discord.id = "newDiscord";
         discord.style = `position: absolute;
                             width: 28px;
                             height: 28px;
-                            left: calc(50% - 28px/2 - 30px);
+                            left: calc(50% - 28px/2 - 30px - 10px);
                             bottom: 27px;
                             transition: filter .3s;
                             opacity: 1;
                             z-index: 999;
+                            border-radius: 50%;
+                            background: white;
+                            padding: 10px;
                             cursor: pointer;`;
 
         email.id = "newMail";
         email.style = `position: absolute;
                             width: 28px;
                             height: 28px;
-                            left: calc(50% - 28px/2 + 30px);
+                            left: calc(50% - 28px/2 + 30px - 10px);
                             bottom: 27px;
+                            border-radius: 50%;
+                            background: white;
+                            padding: 10px;
                             transition: filter .3s;
                             opacity: 1;
                             z-index: 999;
@@ -322,13 +331,9 @@ function resizeWindow(platform){
             newNavbar.style = `box-sizing: border-box;
                                 position: absolute;
                                 width: 150px;
-                                height: 60px;
                                 left: calc(50% - 150px/2 + 0.5px);
-                                bottom: 10px;
+                                bottom: 10px;`;
 
-                                background: rgba(30, 30, 30, 0.2);
-                                border: 1px solid rgba(255, 255, 255, 0.2);
-                                border-radius: 50px;`;
 
             document.body.appendChild(newNavbar);
         };
@@ -404,7 +409,7 @@ function resizeWindow(platform){
 							width: 105px;
 							height: 105px;
 							right: 119px;
-							top: calc(50% - 105px/2);
+							bottom: 100px;
 							z-index: 99;
 							cursor: pointer;
 							transition: all .5s;`;
@@ -458,7 +463,7 @@ box.onmouseup = function(){
 window.onclick = function(event3){
 	var circle = document.createElement("div");
 	circle.id = "circle";
-	circle.style = "border-radius: 50%; height: 0; width: 0; position: absolute; background: transparent; border: 4px solid blue;";
+	circle.style = "border-radius: 50%; height: 0; width: 0; position: absolute; background: transparent; border: 4px solid black;";
 	circle.style.left = (event3.clientX - 5).toString()+"px";
 	circle.style.top = (event3.clientY - 5).toString()+"px";
 	circle.style.zIndex = "9999";

@@ -277,7 +277,7 @@ cursor: pointer;
 position: absolute;
 width: 105px;
 height: 105px;
-left: calc(50% - 105px/2 + 41.5px);
+left: calc(50% - 105px/2);
 bottom: 100px;
 z-index: 999;
 cursor: pointer;
