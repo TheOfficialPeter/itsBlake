@@ -145,11 +145,7 @@ body {
     top: 135px;
     bottom: 119px;
 
-    background: linear-gradient(
-        122.06deg,
-        #4848f0 ,
-        rgba(168, 73, 242, 0.97)
-    );
+    background: linear-gradient(122.06deg, #4848f0, rgba(168, 73, 242, 0.97));
     box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
@@ -284,4 +280,60 @@ body {
     z-index: 9999;
     cursor: pointer;
     transition: all 0.5s;
+}
+
+#popup {
+    position: absolute;
+    height: 0px;
+    opacity: 0;
+    transition: all 0.3s;
+    left: 0px;
+    right: 0px;
+    margin-left: 20%;
+    margin-right: 20%;
+    top: calc(50% - 347px / 2 + 0.5px);
+
+    background: #ffffff;
+    border-radius: 5px;
+    z-index: 999999;
+}
+
+#popup-title {
+    opacity: 0;
+    transition: all .1s;
+    position: absolute;
+    width: 522px;
+    height: 54px;
+    left: calc(50% - 522px / 2);
+    top: calc(50% - 54px / 2 - 117.5px);
+
+    font-family: Open;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 54px;
+    text-align: center;
+
+    color: #2f2f2f;
+    z-index: 9999999;
+}
+
+#popup-content {
+    opacity: 0;
+    transition: all .1s;
+    position: absolute;
+    width: 522px;
+    height: 174px;
+    left: calc(50% - 522px / 2);
+    top: calc(50% - 174px / 2 + 10.5px);
+
+    font-family: Mont;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: center;
+
+    color: #2f2f2f;
+    z-index: 9999999;
 }

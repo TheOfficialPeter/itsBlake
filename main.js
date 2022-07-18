@@ -93,7 +93,7 @@ function nextSlide(num) {
         setTimeout(() => {
             box.style.transition = "all 2s";
             box.style.transform = "rotate(90deg)";
-            box.style.opacity = "0";
+            box.style.filter = "brightness(50%)";
         }, 500);
 
         setTimeout(function () {
@@ -116,7 +116,6 @@ function nextSlide(num) {
         newBox.style.transition = "all .3s";
 
         setTimeout(() => {
-            newBox.style.backgroundPosition = "0% 0%";
             newBox.style.opacity = "1";
         }, 100);
 
@@ -305,7 +304,7 @@ function nextSlide(num) {
             arrow.style.opacity = "1";
             arrow.style.zIndex = "99";
             debounce = false;
-        }, 1000);
+        }, 1200);
     }
 }
 
@@ -500,28 +499,106 @@ window.onresize = function () {
     }
 };
 
-function spawnShadow(bool) {
-    if (bool) {
+function spawnShadow(type) {
+    if (type == "disc") {
         var shadow = document.createElement("div");
-        shadow.style = `position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0); transition: all .2s; z-index: 9999;`;
+        var popup = document.getElementById("popup");
+        var popupTitle = document.getElementById("popup-title");
+        var popupContent = document.getElementById("popup-content");
+        shadow.style = `position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0); transition: all .3s; z-index: 9999;`;
         document.body.appendChild(shadow);
 
+        if (window.innerWidth > 840) {
+            popup.style.marginLeft = "30%";
+            popup.style.marginRight = "30%";
+        }
+
+        // set text
+        popupTitle.innerText = "discord:";
+        popupContent.innerText = "ItzBlake#1470";
+
         setTimeout(() => {
-            shadow.style.backgroundColor = "rgba(0,0,0,0.8)";
+            shadow.style.backgroundColor = "rgba(0,0,0,0.85)";
+            popup.style.opacity = "1";
+            popup.style.height = "347px";
         }, 100);
+
+        setTimeout(() => {
+            // add text
+            popupTitle.style.opacity = "1";
+            popupContent.style.opacity = "1";
+        }, 300);
 
         shadow.onclick = function () {
             shadow.remove();
+            popup.style.top = "unset";
+            popup.style.bottom = "calc(50% - 347px / 2 + 0.5px)";
+            popupTitle.style.opacity = "0";
+            popupContent.style.opacity = "0";
+
+            setTimeout(() => {
+                popup.style.height = "0";
+            }, 100);
+
+            setTimeout(() => {
+                popup.style.bottom = "unset";
+                popup.style.top = "calc(50% - 347px / 2 + 0.5px)";
+            }, 400);
+        };
+    } else {
+        var shadow = document.createElement("div");
+        var popup = document.getElementById("popup");
+        var popupTitle = document.getElementById("popup-title");
+        var popupContent = document.getElementById("popup-content");
+        shadow.style = `position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0); transition: all .3s; z-index: 9999;`;
+        document.body.appendChild(shadow);
+
+        if (window.innerWidth > 840) {
+            popup.style.marginLeft = "30%";
+            popup.style.marginRight = "30%";
+        }
+
+        // set text
+        popupTitle.innerText = "email:";
+        popupContent.innerText = "blake.contact.medias@gmail.com";
+
+        setTimeout(() => {
+            shadow.style.backgroundColor = "rgba(0,0,0,0.85)";
+            popup.style.opacity = "1";
+            popup.style.height = "347px";
+        }, 100);
+
+        setTimeout(() => {
+            // add text
+            popupTitle.style.opacity = "1";
+            popupContent.style.opacity = "1";
+        }, 300);
+
+        shadow.onclick = function () {
+            shadow.remove();
+            popup.style.top = "unset";
+            popup.style.bottom = "calc(50% - 347px / 2 + 0.5px)";
+            popupTitle.style.opacity = "0";
+            popupContent.style.opacity = "0";
+
+            setTimeout(() => {
+                popup.style.height = "0";
+            }, 100);
+
+            setTimeout(() => {
+                popup.style.bottom = "unset";
+                popup.style.top = "calc(50% - 347px / 2 + 0.5px)";
+            }, 400);
         };
     }
 }
 
 discord.onclick = function () {
-    spawnShadow(true);
+    spawnShadow("disc");
 };
 
 mail.onclick = function () {
-    spawnShadow(true);
+    spawnShadow();
 };
 
 box1.onclick = function () {
@@ -559,7 +636,7 @@ window.onclick = function (event3) {
     var circle = document.createElement("div");
     circle.id = "circle";
     circle.style =
-        "border-radius: 50%; height: 0; width: 0; position: absolute; background: transparent; border: 4px solid black;";
+        "border-radius: 50%; height: 0; width: 0; position: absolute; background: transparent; border: 4px solid rgba(0,0,0,.25);";
     circle.style.left = (event3.clientX - 5).toString() + "px";
     circle.style.top = (event3.clientY - 5).toString() + "px";
     circle.style.zIndex = "9999";
