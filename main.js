@@ -170,7 +170,7 @@ function nextSlide(num) {
 								width: 184px;
 								height: 70px;
 								left: 65px;
-								top: 250px;
+								top: 300px;
 								z-index: 999;
 								cursor: pointer;
 								transition: all .2s;
@@ -218,7 +218,7 @@ function nextSlide(num) {
 								background: white;`;
                     message.style = `position: absolute;
 								width: auto;
-								height: 155px;
+								height: 100px;
 								left: 0;
                                 right: 0;
                                 max-width: 400px;
@@ -228,9 +228,9 @@ function nextSlide(num) {
 								background: white;`;
                     submit.style = `position: absolute;
 								width: 184px;
-								height: 70px;
+								height: 50px;
 								left: 10;
-								top: 275px;
+								top: 225px;
 								z-index: 999;
 								cursor: pointer;
 								transition: all .2s;
