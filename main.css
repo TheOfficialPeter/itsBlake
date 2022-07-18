@@ -11,6 +11,7 @@
 body {
     background: linear-gradient(298.26deg, #eaeaea 2.66%, #f9f9f9 100%);
     overflow: hidden;
+    scrollbar-width: none;
 }
 
 #nav {
@@ -285,14 +286,15 @@ body {
 }
 
 #popup {
+    display: none;
     position: absolute;
     height: 0px;
     opacity: 0;
     transition: all 0.3s;
     left: 0px;
     right: 0px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     top: calc(50% - 347px / 2 + 0.5px);
 
     background: #ffffff;
@@ -302,6 +304,7 @@ body {
 
 #popup-title {
     opacity: 0;
+    display: none;
     transition: all .1s;
     position: absolute;
     width: 522px;
@@ -324,11 +327,13 @@ body {
     opacity: 0;
     transition: all .1s;
     position: absolute;
-    width: 522px;
-    height: 174px;
-    left: calc(50% - 522px / 2);
+    left: 5;
+    word-wrap: normal;
+    word-break: break-all;
+    right: 5;
     top: calc(50% - 174px / 2 + 10.5px);
 
+    display: none;
     font-family: Mont;
     font-style: normal;
     font-weight: 300;

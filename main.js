@@ -34,7 +34,7 @@ function nextSlide(num) {
 
         if (num != -1) {
             x = num;
-            
+
             buttons[highlightButton].style.border =
                 "2px solid rgba(0, 0, 0, 0.25)";
             nums[highlightButton].style.color = "#969696";
@@ -99,9 +99,9 @@ function nextSlide(num) {
         }, 500);
 
         setTimeout(function () {
-            box.style.marginRight = "-200%";
+            box.style.marginRight = "-500%";
             box.style.marginBottom = "-200%";
-            box.style.marginLeft = "200%";
+            box.style.marginLeft = "500%";
         }, 600);
 
         var newBox = box.cloneNode(true);
@@ -510,6 +510,10 @@ function spawnShadow(type) {
         shadow.style = `position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0); transition: all .3s; z-index: 9999;`;
         document.body.appendChild(shadow);
 
+        popup.style.display = "block";
+        popupTitle.style.display = "block";
+        popupContent.style.display = "block";
+
         if (window.innerWidth > 840) {
             popup.style.marginLeft = "30%";
             popup.style.marginRight = "30%";
@@ -540,6 +544,9 @@ function spawnShadow(type) {
 
             setTimeout(() => {
                 popup.style.height = "0";
+                popup.style.display = "none";
+                popupTitle.style.display = "none";
+                popupContent.style.display = "none";
             }, 100);
 
             setTimeout(() => {
@@ -554,6 +561,10 @@ function spawnShadow(type) {
         var popupContent = document.getElementById("popup-content");
         shadow.style = `position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0); transition: all .3s; z-index: 9999;`;
         document.body.appendChild(shadow);
+
+        popup.style.display = "block";
+        popupTitle.style.display = "block";
+        popupContent.style.display = "block";
 
         if (window.innerWidth > 840) {
             popup.style.marginLeft = "30%";
@@ -585,6 +596,9 @@ function spawnShadow(type) {
 
             setTimeout(() => {
                 popup.style.height = "0";
+                popup.style.display = "none";
+                popupTitle.style.display = "none";
+                popupContent.style.display = "none";
             }, 100);
 
             setTimeout(() => {
