@@ -164,13 +164,13 @@ function nextSlide(num) {
                                 max-width: 400px;
 								box-shadow: inset 0px 4px 20px rgba(0, 0, 200, 0.25);
 								top: 100px;
-								z-index: 999;
+								z-250pxdex: 999;
 								background: white;`;
                 submit.style = `position: absolute;
 								width: 184px;
 								height: 70px;
 								left: 65px;
-								top: 300px;
+								top: 250px;
 								z-index: 999;
 								cursor: pointer;
 								transition: all .2s;
@@ -494,7 +494,7 @@ if (window.innerWidth <= 840) {
 }
 
 window.onresize = function () {
-    if (window.innerWidth > 840) {
+    if (window.innerWidth > 1164) {
         resizeWindow("desktop");
     } else {
         resizeWindow("mobile");
@@ -514,7 +514,7 @@ function spawnShadow(type) {
         popupTitle.style.display = "block";
         popupContent.style.display = "block";
 
-        if (window.innerWidth > 840) {
+        if (window.innerWidth > 1164) {
             popup.style.marginLeft = "30%";
             popup.style.marginRight = "30%";
         }
@@ -536,7 +536,9 @@ function spawnShadow(type) {
         }, 300);
 
         shadow.onclick = function () {
-            shadow.remove();
+            setTimeout(() => {
+                shadow.remove();
+            }, 300);
             popup.style.top = "unset";
             popup.style.bottom = "calc(50% - 347px / 2 + 0.5px)";
             popupTitle.style.opacity = "0";
@@ -544,14 +546,14 @@ function spawnShadow(type) {
 
             setTimeout(() => {
                 popup.style.height = "0";
-                popup.style.display = "none";
-                popupTitle.style.display = "none";
-                popupContent.style.display = "none";
             }, 100);
 
             setTimeout(() => {
                 popup.style.bottom = "unset";
                 popup.style.top = "calc(50% - 347px / 2 + 0.5px)";
+                popup.style.display = "none";
+                popupTitle.style.display = "none";
+                popupContent.style.display = "none";
             }, 400);
         };
     } else {
@@ -566,7 +568,7 @@ function spawnShadow(type) {
         popupTitle.style.display = "block";
         popupContent.style.display = "block";
 
-        if (window.innerWidth > 840) {
+        if (window.innerWidth > 1163) {
             popup.style.marginLeft = "30%";
             popup.style.marginRight = "30%";
         }
@@ -588,7 +590,12 @@ function spawnShadow(type) {
         }, 300);
 
         shadow.onclick = function () {
-            shadow.remove();
+            shadow.style.opacity = "0";
+
+            setTimeout(() => {
+                shadow.remove();
+            }, 300);
+
             popup.style.top = "unset";
             popup.style.bottom = "calc(50% - 347px / 2 + 0.5px)";
             popupTitle.style.opacity = "0";
@@ -596,14 +603,14 @@ function spawnShadow(type) {
 
             setTimeout(() => {
                 popup.style.height = "0";
-                popup.style.display = "none";
-                popupTitle.style.display = "none";
-                popupContent.style.display = "none";
             }, 100);
 
             setTimeout(() => {
                 popup.style.bottom = "unset";
                 popup.style.top = "calc(50% - 347px / 2 + 0.5px)";
+                popup.style.display = "none";
+                popupTitle.style.display = "none";
+                popupContent.style.display = "none";
             }, 400);
         };
     }
