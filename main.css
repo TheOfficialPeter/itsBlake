@@ -82,6 +82,7 @@ body {
     /* identical to box height */
 
     color: #ffffff;
+    cursor: pointer;
     z-index: 999;
 }
 
@@ -101,6 +102,7 @@ body {
     /* identical to box height */
 
     color: #969696;
+    cursor: pointer;
     z-index: 999;
 }
 

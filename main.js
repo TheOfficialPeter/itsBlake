@@ -8,6 +8,8 @@ var contents = [
 var arrow = document.getElementById("arrow");
 var box1 = document.getElementById("num1-box");
 var box2 = document.getElementById("num2-box");
+var num1 = document.getElementById("num1");
+var num2 = document.getElementById("num2");
 var discord = document.getElementById("discord");
 var mail = document.getElementById("mail");
 var box = document.getElementById("box");
@@ -32,15 +34,15 @@ function nextSlide(num) {
 
         if (num != -1) {
             x = num;
-
-            buttons[x].style.background =
-                "linear-gradient(227.67deg, #c24df2 -28.67%, #4848f0 161.15%)";
-            nums[x].style.color = "white";
-            buttons[x].style.border = "0";
+            
             buttons[highlightButton].style.border =
                 "2px solid rgba(0, 0, 0, 0.25)";
             nums[highlightButton].style.color = "#969696";
             buttons[highlightButton].style.background = "transparent";
+            buttons[x].style.background =
+                "linear-gradient(227.67deg, #c24df2 -28.67%, #4848f0 161.15%)";
+            nums[x].style.color = "white";
+            buttons[x].style.border = "0";
 
             highlightButton = num;
         } else {
@@ -599,6 +601,14 @@ discord.onclick = function () {
 
 mail.onclick = function () {
     spawnShadow();
+};
+
+num1.onclick = function () {
+    nextSlide(0);
+};
+
+num2.onclick = function () {
+    nextSlide(1);
 };
 
 box1.onclick = function () {
