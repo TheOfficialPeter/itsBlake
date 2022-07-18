@@ -90,14 +90,21 @@ function nextSlide(num) {
 
         box = box || document.getElementById("box");
 
+        setTimeout(() => {
+            box.style.transition = "all 2s";
+            box.style.transform = "rotate(90deg)";
+            box.style.opacity = "0";
+        }, 500);
+
         setTimeout(function () {
             box.style.marginRight = "-200%";
+            box.style.marginBottom = "-200%";
             box.style.marginLeft = "200%";
         }, 600);
 
         var newBox = box.cloneNode(true);
         newBox.style.background =
-            "linear-gradient(0deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
+            "linear-gradient(122.06deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%, white)";
 
         if (device == "mobile") {
             newBox.style.margin = "87px -10px -37px 10px";
@@ -105,7 +112,13 @@ function nextSlide(num) {
             newBox.style.margin = "37px -48px -37px 48px";
         }
 
+        newBox.style.opacity = "0";
         newBox.style.transition = "all .3s";
+
+        setTimeout(() => {
+            newBox.style.backgroundPosition = "0% 0%";
+            newBox.style.opacity = "1";
+        }, 100);
 
         newBox.style.zIndex = "1";
         box.style.zIndex = "90";
@@ -116,7 +129,6 @@ function nextSlide(num) {
             var pageTitle = document.getElementById("page-title");
             var pageContent = document.getElementById("page-content");
 
-            pageNum.style.right = "20";
             pageNum.innerText = "0" + (x + 1).toString();
             pageTitle.innerText = titles[x];
 
@@ -257,8 +269,6 @@ function nextSlide(num) {
         }, 500);
 
         setTimeout(function () {
-            newBox.style.background =
-                "linear-gradient(122.06deg, #4848F0 5.23%, rgba(168, 73, 242, 0.97) 101.96%)";
             newBox.style.zIndex = "11";
             newBox.style.transition = "all 1s";
             box.remove();
@@ -281,7 +291,7 @@ function nextSlide(num) {
             box.onmouseup = function () {
                 document.onmousemove = null;
             };
-        }, 1000);
+        }, 1200);
 
         setTimeout(function () {
             if (device == "mobile") {
