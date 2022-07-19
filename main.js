@@ -1,9 +1,7 @@
-var titles = ["About Me", "Contact", "Contact", "Credits"];
+var titles = ["About Me", "Previous work"];
 var contents = [
     "About me stuff here",
     "previous work goes here with images or smth",
-    "",
-    "This website is an example of my work. It was made using HTML, CSS and JS.",
 ];
 var arrow = document.getElementById("arrow");
 var box1 = document.getElementById("num1-box");
@@ -20,6 +18,20 @@ var dragThreshY = 200;
 var highlightButton = 0;
 var debounce = false;
 var device = "";
+
+function sendEmail() {
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: "<sender’s email address>",
+        Password: "<email password>",
+        To: "<recipient’s email address>",
+        From: "<sender’s email address>",
+        Subject: "<email subject>",
+        Body: "<email body>",
+    }).then(function (message) {
+        alert("mail sent successfully");
+    });
+}
 
 function nextSlide(num) {
     if (debounce === false) {
@@ -133,134 +145,17 @@ function nextSlide(num) {
             pageNum.innerText = "0" + (x + 1).toString();
             pageTitle.innerText = titles[x];
 
-            if (x == 1) {
-                pageContent.innerText = "";
+            arrow.style.top = "";
+            arrow.style.bottom = "100px";
 
-                // add contact info
-                var email = document.createElement("div");
-                var message = document.createElement("div");
-                var submit = document.createElement("div");
-                var submitText = document.createElement("div");
-                var emailText = document.createElement("div");
-                var messageText = document.createElement("div");
+            pageContent.innerText = contents[x];
 
-                email.id = "emailbox";
-                message.id = "messagebox";
-                submit.id = "submitbox";
-
-                email.style = `position: absolute;
-								width: 327px;
-								box-shadow: inset 0px 4px 20px rgba(0, 0, 200, 0.25);
-								height: 63px;
-								left: 0;
-                                max-width: 400px;
-								top: 20px;
-								z-index: 999;
-								background: white;`;
-                message.style = `position: absolute;
-								width: 327px;
-								height: 155px;
-								left: 0;
-                                max-width: 400px;
-								box-shadow: inset 0px 4px 20px rgba(0, 0, 200, 0.25);
-								top: 100px;
-								z-250pxdex: 999;
-								background: white;`;
-                submit.style = `position: absolute;
-								width: 184px;
-								height: 70px;
-								left: 65px;
-								top: 300px;
-								z-index: 999;
-								cursor: pointer;
-								transition: all .2s;
-                                outline: 3px solid #dfdfdf;
-								background: white;`;
-                submitText.style = `position: absolute;
-									left: 0;
-									right: 0;
-									font-family: Mont;
-									font-weight: 100;
-									text-align: center;
-									top: calc(50% - 30px/2);
-                                    color: black;
-									font-size: 25px;`;
-                emailText.style = `position: absolute;
-									right: 0;
-									top: 10px;
-									font-family: Open;
-									transition: all .2s;
-									font-size: 20px;
-                                    color: black;
-									left: 10px;`;
-                messageText.style = `position: absolute;
-									right: 0;
-                                    color: black;
-									top: 10px;
-									transition: all .2s;
-									font-family: Open;
-									font-size: 20px;
-									left: 10px;`;
-
-                if (device == "mobile") {
-                    arrow.style.bottom = "";
-                    arrow.style.top = "100";
-
-                    email.style = `position: absolute;
-								width: auto;
-								box-shadow: inset 0px 4px 20px rgba(0, 0, 200, 0.25);
-								height: 63px;
-								left: 0;
-                                right: 0;
-                                max-width: 400px;
-								top: 20px;
-								z-index: 999;
-								background: white;`;
-                    message.style = `position: absolute;
-								width: auto;
-								height: 100px;
-								left: 0;
-                                right: 0;
-                                max-width: 400px;
-								box-shadow: inset 0px 4px 20px rgba(0, 0, 200, 0.25);
-								top: 100px;
-								z-index: 999;
-								background: white;`;
-                    submit.style = `position: absolute;
-								width: 184px;
-								height: 50px;
-								left: 10;
-								top: 225px;
-								z-index: 999;
-								cursor: pointer;
-								transition: all .2s;
-                                outline: 3px solid #dfdfdf;
-								background: white;`;
-                }
-
-                submitText.innerText = "Submit";
-                emailText.innerText = "Email";
-                messageText.innerText = "Message";
-
-                pageContent.appendChild(email);
-                pageContent.appendChild(message);
-                pageContent.appendChild(submit);
-                submit.appendChild(submitText);
-                email.appendChild(emailText);
-                message.appendChild(messageText);
-            } else {
-                arrow.style.top = "";
-                arrow.style.bottom = "100px";
-
-                pageContent.innerText = contents[x];
-
-                try {
-                    document.getElementById("emailbox").remove();
-                    document.getElementById("messagebox").remove();
-                    document.getElementById("submitbox").remove();
-                } catch {
-                    return;
-                }
+            try {
+                document.getElementById("emailbox").remove();
+                document.getElementById("messagebox").remove();
+                document.getElementById("submitbox").remove();
+            } catch {
+                return;
             }
         }, 500);
 
@@ -275,7 +170,7 @@ function nextSlide(num) {
             box.remove();
             box = newBox;
 
-            box.onmousedown = function () {
+            box.onmousedown = function (event) {
                 dragStart = event.clientX;
                 document.onmousemove = function (event2) {
                     if (event2.clientX - dragX >= dragThreshX && device == "") {
@@ -336,6 +231,10 @@ function resizeWindow(platform) {
         pageTitle.style.left = "10";
 
         numBar.style.display = "none";
+        num1Box.style.display = "none";
+        num2Box.style.display = "none";
+        num1.style.display = "none";
+        num2.style.display = "none";
         num1Box.style.opacity = "0";
         num2Box.style.opacity = "0";
         num1.style.opacity = "0";
@@ -434,6 +333,10 @@ function resizeWindow(platform) {
         pageTitle.style.left = "80px";
 
         numBar.style.display = "block";
+        num1Box.style.display = "block";
+        num2Box.style.display = "block";
+        num1.style.display = "block";
+        num2.style.display = "block";
         num1Box.style.opacity = "1";
         num2Box.style.opacity = "1";
         num1.style.opacity = "1";
@@ -536,6 +439,8 @@ function spawnShadow(type) {
         }, 300);
 
         shadow.onclick = function () {
+            shadow.style.opacity = "0";
+
             setTimeout(() => {
                 shadow.remove();
             }, 300);
@@ -645,8 +550,8 @@ arrow.onclick = function () {
 };
 
 box.onmousedown = function (event) {
-    dragX = event.clientX;
-    dragY = event.clientY;
+    var dragX = event.clientX;
+    var dragY = event.clientY;
     document.onmousemove = function (event2) {
         if (event2.clientX - dragX >= dragThreshX && device == "") {
             nextSlide(-1);
